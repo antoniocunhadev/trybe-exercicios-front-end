@@ -12,5 +12,5 @@ passwordBtnEl.addEventListener('click', () => {
 
 displayPasswordEl.addEventListener('click', (event) => {
   copy(event.target.innerHTML);
-  alert('Senha copiada!');
+  console.log('Senha copiada!');
 });
