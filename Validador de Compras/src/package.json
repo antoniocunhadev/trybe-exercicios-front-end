@@ -1,0 +1,11 @@
+{
+  "name": "validador-de-contas",
+  "version": "1.0.0",
+  "description": "Esse projeto vai validar as contas",
+  "main": "main.js",
+  "scripts": {
+    "test": "npm"
+  },
+  "author": "Antonio Cunha",
+  "license": "ISC"
+}
