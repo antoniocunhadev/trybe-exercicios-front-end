@@ -10,6 +10,10 @@ const resolvedPromise = () =>
     }, 1000);
   });
 
+  resolvedPromise().then((response) => {
+    console.log(`resolvedPromise: O número gerado é ${response}`);
+  })
+
   // promise rejeitada retornando um objeto de erro
 const rejectedPromise = () =>
 new Promise((resolve, reject) => {
@@ -19,6 +23,8 @@ new Promise((resolve, reject) => {
   }, 1000);
 });
 
-  console.log(generateRandomNumber());
-  console.log(resolvedPromise());
-  console.log(rejectedPromise());
+rejectedPromise().then((response) => {
+  console.log(`rejectedPromise: O número gerado é ${response}`);
+})
+
+ 
