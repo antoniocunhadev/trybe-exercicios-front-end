@@ -1,27 +1,33 @@
+// src/App.js
 import React from 'react';
-import './App.css';
-
-function handleClick01() {
-  console.log('Clicou no botão 01!')
-}
-
-function handleClick02() {
-  console.log('Clicou no botão 02!')
-}
-
-function handleClick03() {
-  console.log('Clicou no botão 03!')
-}
 
 class App extends React.Component {
+  constructor () {
+    super ()
+    this.handleButtonOne = this.handleButtonOne.bind(this)
+    this.handleButtonTwo = this.handleButtonTwo.bind(this)
+    this.handleButtonThree = this.handleButtonThree.bind(this)
+  }
+  handleButtonOne() {
+    console.log('Clicou no botão 1!', this);
+  }
+
+  handleButtonTwo() {
+    console.log('Clicou no botão 2!', this);
+  }
+
+  handleButtonThree() {
+    console.log('Clicou no botão 3!', this);
+  }
+
   render() {
     return (
-    <div>
-    <button onClick={handleClick01}>Botão 01</button>
-    <button onClick={handleClick02}>Botão 02</button>
-    <button onClick={handleClick03}>Botão 03</button>
-    </div>
-    )
+      <div>
+        <button type="button" onClick={ this.handleButtonOne }>Botão 1</button>
+        <button type="button" onClick={ this.handleButtonTwo }>Botão 2</button>
+        <button type="button" onClick={ this.handleButtonThree }>Botão 3</button>
+      </div>
+    );
   }
 }
 
