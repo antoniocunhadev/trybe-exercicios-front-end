@@ -1,37 +1,50 @@
+// src/App.js
 import React from 'react';
-import './App.css';
 
 class App extends React.Component {
-  constructor() {
-    super();
-    /* Para definir um estado inicial ao componente, a ser definido
-    no momento em que o componente for colocado na tela, faça uma atribuição
-    de um objeto à chave `state` do `this`, ou seja, ao `this.state` */
-    this.state = {
-      numeroDeCliques: 0,
-    };
-    this.handleClick = this.handleClick.bind(this);
+  constructor () {
+    super ()
+    this.handleButtonOne = this.handleButtonOne.bind(this)
+    this.handleButtonTwo = this.handleButtonTwo.bind(this)
+    this.handleButtonThree = this.handleButtonThree.bind(this)
+    this.state = { 
+      numeroDeCliques1: 0,
+      numeroDeCliques2: 0,
+      numeroDeCliques3: 0,
+    }
+    
+  }
+  handleButtonOne() {
+    this.setState ((estadoAnterior) => ({
+      numeroDeCliques1: estadoAnterior.numeroDeCliques1 + 1
+    }))
+    console.log('Clicou no botão 1!', this);
   }
 
-  handleClick() {
-    /* Você **NUNCA** deve fazer atribuições diretamente a `this.state`. Deve,
-    ao invés disso, SEMPRE utilizar a função `this.setState(novoEstado)` do
-    React */
-    this.setState((estadoAnterior, _props) => ({
-      numeroDeCliques: estadoAnterior.numeroDeCliques + 1,
-    }));
+  handleButtonTwo() {
+    this.setState ((estadoAnterior) => ({
+      numeroDeCliques2: estadoAnterior.numeroDeCliques2 + 1
+    }))
+    console.log('Clicou no botão 2!', this);
+  }
+
+  handleButtonThree() {
+    this.setState ((estadoAnterior) => ({
+      numeroDeCliques3: estadoAnterior.numeroDeCliques3 + 1
+    }))
+    console.log('Clicou no botão 3!', this);
   }
 
   render() {
-    /* Para LER o estado, você pode usar `this.state.chaveDoMeuEstado` */
-    const { numeroDeCliques } = this.state;
+    const { numeroDeCliques1 } = this.state
+    const { numeroDeCliques2 } = this.state
+    const { numeroDeCliques3 } = this.state
     return (
-      <button
-        type="button"
-        onClick={ this.handleClick }
-      >
-        { numeroDeCliques }
-      </button>
+      <div>
+        <button type="button" onClick={ this.handleButtonOne }>{ numeroDeCliques1 }</button>
+        <button type="button" onClick={ this.handleButtonTwo }>{`Cliques botão 2: ${numeroDeCliques2}` }</button>
+        <button type="button" onClick={ this.handleButtonThree }>{ numeroDeCliques3 }</button>
+      </div>
     );
   }
 }
