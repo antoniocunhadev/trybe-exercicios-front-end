@@ -36,7 +36,7 @@ class App extends React.Component {
   }
 
   getButtonColor(num) {
-    return num % 2 === 0 ? 'green' : 'white';
+    return num % 2 === 0 ? 'green' : 'yellow';
   }
 
   render() {
