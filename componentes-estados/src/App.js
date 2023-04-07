@@ -1,32 +1,37 @@
-// src/App.js
 import React from 'react';
+import './App.css';
 
 class App extends React.Component {
-  constructor () {
-    super ()
-    this.handleButtonOne = this.handleButtonOne.bind(this)
-    this.handleButtonTwo = this.handleButtonTwo.bind(this)
-    this.handleButtonThree = this.handleButtonThree.bind(this)
-  }
-  handleButtonOne() {
-    console.log('Clicou no botão 1!', this);
-  }
-
-  handleButtonTwo() {
-    console.log('Clicou no botão 2!', this);
+  constructor() {
+    super();
+    /* Para definir um estado inicial ao componente, a ser definido
+    no momento em que o componente for colocado na tela, faça uma atribuição
+    de um objeto à chave `state` do `this`, ou seja, ao `this.state` */
+    this.state = {
+      numeroDeCliques: 0,
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleButtonThree() {
-    console.log('Clicou no botão 3!', this);
+  handleClick() {
+    /* Você **NUNCA** deve fazer atribuições diretamente a `this.state`. Deve,
+    ao invés disso, SEMPRE utilizar a função `this.setState(novoEstado)` do
+    React */
+    this.setState((estadoAnterior, _props) => ({
+      numeroDeCliques: estadoAnterior.numeroDeCliques + 1,
+    }));
   }
 
   render() {
+    /* Para LER o estado, você pode usar `this.state.chaveDoMeuEstado` */
+    const { numeroDeCliques } = this.state;
     return (
-      <div>
-        <button type="button" onClick={ this.handleButtonOne }>Botão 1</button>
-        <button type="button" onClick={ this.handleButtonTwo }>Botão 2</button>
-        <button type="button" onClick={ this.handleButtonThree }>Botão 3</button>
-      </div>
+      <button
+        type="button"
+        onClick={ this.handleClick }
+      >
+        { numeroDeCliques }
+      </button>
     );
   }
 }
